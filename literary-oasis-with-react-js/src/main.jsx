@@ -6,11 +6,14 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './Components/Home/Home.jsx'
 import ListBooks from './Components/ListBooks/ListBooks.jsx'
 import PageToRead from './Components/PageToRead/PageToRead.jsx'
+import BookDetails from './Components/BookDetails/BookDetails.jsx'
+import Error from './Components/Error/Error.jsx'
 
 
 const router = createBrowserRouter([{
   path: '/',
   element: <App></App>,
+  errorElement: <Error></Error>,
   children: [
     {
       path: '/',
@@ -18,11 +21,19 @@ const router = createBrowserRouter([{
     },
     {
       path: '/listbooks',
-      element: <ListBooks></ListBooks>
+      element: <ListBooks></ListBooks>,
+      // loader: fetch('/books.json')
+
     },
     {
       path: '/pagetoread',
       element: <PageToRead></PageToRead>
+    },
+    {
+      path: '/bookdetails/:bookId',
+      // loader: fetch('https://mehedi-9t9.github.io/books-data-host/books.json'),
+      element: <BookDetails></BookDetails>,
+
     }
   ]
 }])

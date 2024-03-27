@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <h2 className='text-3xl text-red-600'>pera r pera</h2>
       <Outlet></Outlet>
 
     </>
