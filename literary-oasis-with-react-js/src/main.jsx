@@ -30,7 +30,7 @@ const router = createBrowserRouter([{
       element: <PageToRead></PageToRead>
     },
     {
-      path: '/bookdetails/:bookId',
+      path: '/bookdetails/:currentId',
       // loader: fetch('https://mehedi-9t9.github.io/books-data-host/books.json'),
       element: <BookDetails></BookDetails>,
 

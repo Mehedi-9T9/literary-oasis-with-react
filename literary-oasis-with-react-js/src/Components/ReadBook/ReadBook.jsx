@@ -4,11 +4,11 @@ import { MdOutlineContactPage } from "react-icons/md";
 
 const ReadBook = ({ book }) => {
     console.log(book[0]);
-    const { bookName, image, author, yearOfPublishing, tags, publisher, totalPages, category, rating } = book[0]
+    const { bookName, image, author, yearOfPublishing, tags, publisher, totalPages, category, rating } = book[0] || []
     return (
         <div className="  h-[300px]  mt-4 rounded-xl border-2">
             <div className=" flex items-center justify-between ">
-                <div className='w-[20%] p-10 bg-slate-300 m-6 rounded-xl'>
+                <div className='w-[20%] p-10 bg-base-300 m-6 rounded-xl '>
                     <img src={image} className="w-[130px] h-[170px]" />
                 </div>
                 <div className='w-[80%] space-y-3'>

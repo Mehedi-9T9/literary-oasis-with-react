@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { savedBook } from '../../utility/utility';
+import { getBookId, saveWishId, savedBook } from '../../utility/utility';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const BookDetails = () => {
     const [selects, setSelects] = useState([])
-    const { bookId } = useParams()
-    const idpars = parseInt(bookId)
+    const { currentId } = useParams()
+    const idpars = parseInt(currentId)
     useEffect(() => {
         // fetch('https://mehedi-9t9.github.io/books-data-host/books.json')
         fetch('../books.json')
@@ -17,13 +17,29 @@ const BookDetails = () => {
 
     const current = selects.find(item => item.bookId === idpars);
     // const { author, bookName, category, image, publisher, rating, tags } = current || {}
-    console.log(current);
-    const { bookName, author, review, tags, totalPages, publisher, yearOfPublishing, rating, image, category } = current || {}
-    const notify = () => toast("List Books Add Successful!");
+    // console.log(current);
+    const { bookName, author, review, tags, totalPages, publisher, yearOfPublishing, rating, image, category, bookId } = current || {}
 
-    const readHandler = () => {
-        savedBook(idpars)
-        notify()
+    const notify = (text) => toast(text);
+    const readHandler = (id) => {
+
+        const check = getBookId()
+
+        const have = check.find(cid => cid == id)
+        console.log(have);
+        if (have) {
+            notify('Sorry')
+        } else {
+            savedBook(idpars)
+            notify('Book List Successfully')
+        }
+
+    }
+
+    const wishHandler = (id) => {
+        saveWishId(id)
+        console.log(id);
+
     }
 
     return (
@@ -61,8 +77,8 @@ const BookDetails = () => {
                             <p>{rating}</p>
                         </div>
                     </div >
-                    <button className="btn mr-10 text-black text-lg font-semibold" onClick={readHandler}>Read</button>
-                    <button className="btn bg-[#50B1C9] text-white text-lg font-semibold">Wishlist</button>
+                    <button className="btn mr-10 text-black text-lg font-semibold" onClick={() => readHandler(bookId)}>Read</button>
+                    <button className="btn bg-[#50B1C9] text-white text-lg font-semibold" onClick={() => wishHandler(bookId)}>Wishlist</button>
                 </div >
             </div >
             <ToastContainer />
