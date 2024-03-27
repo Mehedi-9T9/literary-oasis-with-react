@@ -3,7 +3,7 @@ import { IoPeopleOutline } from "react-icons/io5";
 import { MdOutlineContactPage } from "react-icons/md";
 
 const ReadBook = ({ book }) => {
-    console.log(book[0]);
+    // console.log(book[0]);
     const { bookName, image, author, yearOfPublishing, tags, publisher, totalPages, category, rating } = book[0] || []
     return (
         <div className="  h-[300px]  mt-4 rounded-xl border-2">

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { getBookId } from '../../utility/utility';
+import { getBookId, getWishId } from '../../utility/utility';
 import ReadBook from '../ReadBook/ReadBook';
 // import { useLoaderData } from 'react-router-dom';
 
@@ -8,11 +8,13 @@ const ListBooks = () => {
     // const allBooks = useLoaderData()
     // console.log(allBooks);
     const [getBooks, setGetBooks] = useState([])
+    const [getWish, setGetWish] = useState([])
     useEffect(() => {
         fetch('../books.json')
             .then(res => res.json())
             .then(data => {
                 const storedBookId = getBookId()
+                const storedWishId = getWishId()
                 // console.log(storedBookId, data);
                 if (data.length > 0) {
                     const booksArray = [];
@@ -23,10 +25,20 @@ const ListBooks = () => {
                         }
                     }
                     setGetBooks(booksArray);
+
+                    const wishArr = []
+                    for (const wid of storedWishId) {
+                        const wish = data.filter(item => item.bookId === wid)
+                        if (wish) {
+                            wishArr.push(wish)
+                        }
+                    }
+                    setGetWish(wishArr)
                 }
 
             })
     }, [])
+    console.log(getWish, getBooks);
 
     return (
         <div className='container mx-auto'>
@@ -44,7 +56,11 @@ const ListBooks = () => {
                 </div>
 
                 <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tab 2" />
-                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">Tab content 2</div>
+                <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    {
+                        getWish.map(wish => <ReadBook book={wish} key={wish.bookId}></ReadBook>)
+                    }
+                </div>
 
             </div>
 

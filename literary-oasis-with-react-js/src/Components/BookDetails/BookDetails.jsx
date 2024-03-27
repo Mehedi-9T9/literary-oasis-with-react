@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getBookId, saveWishId, savedBook } from '../../utility/utility';
+import { getBookId, getWishId, saveWishId, savedBook } from '../../utility/utility';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,11 +8,18 @@ const BookDetails = () => {
     const [selects, setSelects] = useState([])
     const { currentId } = useParams()
     const idpars = parseInt(currentId)
+
+
+
+
+
+
     useEffect(() => {
         // fetch('https://mehedi-9t9.github.io/books-data-host/books.json')
         fetch('../books.json')
             .then(res => res.json())
             .then(data => setSelects(data))
+
     }, [])
 
     const current = selects.find(item => item.bookId === idpars);
@@ -21,24 +28,38 @@ const BookDetails = () => {
     const { bookName, author, review, tags, totalPages, publisher, yearOfPublishing, rating, image, category, bookId } = current || {}
 
     const notify = (text) => toast(text);
+
+
     const readHandler = (id) => {
+        const bookData = getBookId()
 
-        const check = getBookId()
-
-        const have = check.find(cid => cid == id)
+        const have = bookData.find(cid => cid == id)
         console.log(have);
         if (have) {
             notify('Sorry')
         } else {
-            savedBook(idpars)
+            savedBook(id)
             notify('Book List Successfully')
         }
+
 
     }
 
     const wishHandler = (id) => {
-        saveWishId(id)
+        // saveWishId(id)
         console.log(id);
+
+        const bookData = getBookId()
+        const wishData = getWishId()
+        const haveBook = bookData.find(cid => cid == id)
+        const haveWish = wishData.find(cid => cid == id)
+        if (haveBook || haveWish) {
+            notify("Sorry")
+        } else {
+            saveWishId(id)
+            notify('added successfull')
+        }
+
 
     }
 
