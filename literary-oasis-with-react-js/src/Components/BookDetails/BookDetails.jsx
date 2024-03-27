@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { savedBook } from '../../utility/utility';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookDetails = () => {
     const [selects, setSelects] = useState([])
@@ -17,10 +19,11 @@ const BookDetails = () => {
     // const { author, bookName, category, image, publisher, rating, tags } = current || {}
     console.log(current);
     const { bookName, author, review, tags, totalPages, publisher, yearOfPublishing, rating, image, category } = current || {}
-
+    const notify = () => toast("List Books Add Successful!");
 
     const readHandler = () => {
         savedBook(idpars)
+        notify()
     }
 
     return (
@@ -62,6 +65,7 @@ const BookDetails = () => {
                     <button className="btn bg-[#50B1C9] text-white text-lg font-semibold">Wishlist</button>
                 </div >
             </div >
+            <ToastContainer />
         </div >
 
 
