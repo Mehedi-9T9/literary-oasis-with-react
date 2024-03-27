@@ -2,11 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { getBookId, getWishId } from '../../utility/utility';
 import ReadBook from '../ReadBook/ReadBook';
-// import { useLoaderData } from 'react-router-dom';
+import { IoArrowDownCircleSharp } from "react-icons/io5";
 
 const ListBooks = () => {
-    // const allBooks = useLoaderData()
-    // console.log(allBooks);
     const [getBooks, setGetBooks] = useState([])
     const [getWish, setGetWish] = useState([])
     useEffect(() => {
@@ -19,7 +17,7 @@ const ListBooks = () => {
                 if (data.length > 0) {
                     const booksArray = [];
                     for (const id of storedBookId) {
-                        const book = data.filter(item => item.bookId === id)
+                        const book = data.find(item => item.bookId === id)
                         if (book) {
                             booksArray.push(book)
                         }
@@ -28,7 +26,7 @@ const ListBooks = () => {
 
                     const wishArr = []
                     for (const wid of storedWishId) {
-                        const wish = data.filter(item => item.bookId === wid)
+                        const wish = data.find(item => item.bookId === wid)
                         if (wish) {
                             wishArr.push(wish)
                         }
@@ -38,10 +36,33 @@ const ListBooks = () => {
 
             })
     }, [])
-    console.log(getWish, getBooks);
+    // console.log(getWish, getBooks);
+    const ratingHandler = () => {
+        const shortByRating = [...getBooks].sort((a, b) => a.rating - b.rating)
+        setGetBooks(shortByRating)
+    }
+    const pagesHandler = () => {
+        const shortData = [...getBooks].sort((a, b) => a.totalPages - b.totalPages)
+        setGetBooks(shortData)
 
+    }
     return (
         <div className='container mx-auto'>
+            <div className='text-5xl bg-slate-300 py-10 text-center font-bold m-5 rounded-xl'>
+                <h2>Book</h2>
+            </div>
+
+            <div className='text-center'>
+                <div className="dropdown dropdown-bottom">
+                    <div tabIndex={0} role="button" className="btn text-xl bg-green-500 text-white font-bold m-1">Sort By <IoArrowDownCircleSharp /></div>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-lg font-semibold">
+                        <li onClick={ratingHandler}><a>Rating</a></li>
+                        <li onClick={pagesHandler}><a>Pages</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
             <h2>Books List {getBooks.length}</h2>
 
             <div role="tablist" className="tabs tabs-lifted">
