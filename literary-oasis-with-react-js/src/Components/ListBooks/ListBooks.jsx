@@ -37,12 +37,18 @@ const ListBooks = () => {
             })
     }, [])
     const ratingHandler = () => {
-        const shortByRating = [...getBooks].sort((a, b) => a.rating - b.rating)
-        setGetBooks(shortByRating)
+        const shortBooks = [...getBooks].sort((a, b) => b.rating - a.rating)
+        setGetBooks(shortBooks)
+
+        const shortWishs = [...getBooks].sort((a, b) => b.rating - a.rating)
+        setGetBooks(shortWishs)
     }
     const pagesHandler = () => {
-        const shortData = [...getBooks].sort((a, b) => a.totalPages - b.totalPages)
-        setGetBooks(shortData)
+        const shortBooks = [...getBooks].sort((a, b) => b.totalPages - a.totalPages)
+        setGetBooks(shortBooks)
+
+        const shortWishs = [...getBooks].sort((a, b) => b.totalPages - a.totalPages)
+        setGetBooks(shortWishs)
 
     }
     return (

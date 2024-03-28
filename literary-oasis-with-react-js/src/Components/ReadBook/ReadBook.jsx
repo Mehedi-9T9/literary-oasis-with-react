@@ -16,7 +16,7 @@ const ReadBook = ({ book }) => {
     const favHandler = (id) => {
         const favData = getFavItem()
         const have = favData.find(fid => fid == id)
-        console.log(have);
+        // console.log(have);
         if (have) {
             notify('Sorry!')
         } else {
@@ -54,13 +54,14 @@ const ReadBook = ({ book }) => {
                             <p>Page: {totalPages}</p>
                         </div>
                     </div>
+                    <ToastContainer />
 
                     <button className="btn rounded-3xl mr-6 bg-[#D7E5F6] text-[#328EFF]">Category: {category}</button>
                     <button className="btn rounded-3xl mr-6 bg-[#F6EAD8] text-[#FFAC33]">Rating: {rating}</button>
                     <button onClick={() => favHandler(bookId)} className="btn rounded-3xl  bg-[#23BE0A] text-red-700 font-bold"><FaRegHeart /></button>
                 </div>
             </div>
-            <ToastContainer />
+
         </div>
     );
 };
