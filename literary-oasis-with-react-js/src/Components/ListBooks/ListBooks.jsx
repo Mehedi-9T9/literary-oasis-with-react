@@ -36,7 +36,6 @@ const ListBooks = () => {
 
             })
     }, [])
-    // console.log(getWish, getBooks);
     const ratingHandler = () => {
         const shortByRating = [...getBooks].sort((a, b) => a.rating - b.rating)
         setGetBooks(shortByRating)
@@ -64,28 +63,19 @@ const ListBooks = () => {
             </div>
 
             <div role="tablist" className="tabs tabs-lifted">
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tab 1" checked />
+                <input type="radio" name="my_tabs_2" role="tab" className="tab text-xl font-semibold" aria-label="Read Books" checked />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-
-
                     {
                         getBooks.map((book, idx) => <ReadBook book={book} key={idx}></ReadBook>)
                     }
-
-
-
                 </div>
-
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tab 2" />
+                <input type="radio" name="my_tabs_2" role="tab" className="tab text-xl font-semibold" aria-label="Wish Books" />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
                     {
                         getWish.map(wish => <ReadBook book={wish} key={wish.bookId}></ReadBook>)
                     }
                 </div>
-
             </div>
-
-
         </div>
     );
 };

@@ -5,27 +5,24 @@ import { FaRegHeart } from "react-icons/fa";
 import { getFavItem, saveFavItem } from "../../utility/utility";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from "prop-types";
 
 
 
 const ReadBook = ({ book }) => {
-    // console.log(book[0]);
-    const { bookName, image, author, yearOfPublishing, tags, publisher, totalPages, category, rating, bookId } = book || {}
+    const { bookName, image, author, yearOfPublishing, tags, publisher, totalPages, category, rating, bookId } = book
     const notify = (text) => toast(text);
 
     const favHandler = (id) => {
-        // const favData = getFavItem()
-        saveFavItem(id)
-        notify('Book List Successfully')
-
-        // const have = favData.find(fid => fid == id)
-        // console.log(have);
-        // if (have) {
-        //     notify('Sorry')
-        // } else {
-        //     saveFavItem(id)
-        //     notify('Book List Successfully')
-        // }
+        const favData = getFavItem()
+        const have = favData.find(fid => fid == id)
+        console.log(have);
+        if (have) {
+            notify('Sorry!')
+        } else {
+            saveFavItem(id)
+            notify('Favorite Books Added Successfully')
+        }
     }
     return (
         <div className="  md:h-[300px]  mt-4 rounded-xl border-2">
@@ -39,7 +36,7 @@ const ReadBook = ({ book }) => {
                     <div className="flex gap-x-6 ">
                         <p className='text-base font-bold '>Tags:</p>
                         <div className="flex  text-green-600 font-medium">
-                            {tags || [].map((tag, idx) => <li key={idx} className="ml-5">{tag}</li>)}
+                            {tags.map((tag, idx) => <p key={idx} className="ml-5"> #{tag}</p>)}
                         </div>
                         <div className="flex gap-x-4 items-center">
                             <FaLocationDot />
@@ -63,11 +60,14 @@ const ReadBook = ({ book }) => {
                     <button onClick={() => favHandler(bookId)} className="btn rounded-3xl  bg-[#23BE0A] text-red-700 font-bold"><FaRegHeart /></button>
                 </div>
             </div>
-
             <ToastContainer />
-
         </div>
     );
+};
+
+ReadBook.propTypes = {
+    book: PropTypes.object,
+
 };
 
 export default ReadBook;

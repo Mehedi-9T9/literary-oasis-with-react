@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { CiStar } from "react-icons/ci";
+import PropTypes from "prop-types";
+
 
 const Book = ({ book }) => {
     const { author, bookId, bookName, category, image, publisher, rating, tags } = book
@@ -17,16 +20,21 @@ const Book = ({ book }) => {
                 <h3>By: {author}</h3>
                 <div className="flex ">
                     <p>{category}</p>
-                    <div>
+                    <div className="flex items-center gap-3 ">
                         <p>{rating}</p>
+                        <CiStar className="text-2xl" />
                     </div>
                 </div>
                 <div className="card-actions">
-                    <Link to={`/bookdetails/${bookId}`}> <button className="btn"> Show Details</button></Link>
+                    <Link to={`/bookdetails/${bookId}`}> <button className="btn bg-[#23BE0A] text-white text-lg font-semibold"> Show Details</button></Link>
                 </div>
             </div>
         </div>
     );
+};
+Book.propTypes = {
+    book: PropTypes.object,
+
 };
 
 export default Book;

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import ReviewPage from '../ReviewPage/ReviewPage';
 
 const Review = () => {
     const [reviews, setReviews] = useState([])
@@ -8,8 +9,10 @@ const Review = () => {
             .then(data => setReviews(data))
     }, [])
     return (
-        <div>
-            <h2>This is review</h2>
+        <div className='md:grid grid-cols-2 gap-5 container mx-auto md:p-10'>
+            {
+                reviews.map((review, idx) => <ReviewPage review={review} key={idx}></ReviewPage>)
+            }
         </div>
     );
 };

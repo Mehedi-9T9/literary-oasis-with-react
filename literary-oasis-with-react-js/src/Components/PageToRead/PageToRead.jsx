@@ -1,9 +1,7 @@
 
 import { useEffect, useState } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getBookId } from '../../utility/utility';
-
-
 
 
 const PageToRead = () => {
@@ -13,7 +11,6 @@ const PageToRead = () => {
             .then(res => res.json())
             .then(data => {
                 const storedBookId = getBookId()
-                // console.log(storedBookId, data);
                 if (data.length > 0) {
                     const booksArray = [];
                     for (const id of storedBookId) {
@@ -21,24 +18,14 @@ const PageToRead = () => {
                         if (book) {
                             booksArray.push(book)
                         }
-                        // console.log(book);
-                        // setChatData(book);
                     }
                     setChatData(booksArray);
                 }
 
             })
 
-
     }, [])
-
-
-
-
-
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-
-
 
     const getPath = (x, y, width, height) => {
         return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
@@ -54,29 +41,30 @@ const PageToRead = () => {
     };
 
     return (
-        <div className='container mx-auto bg-[#EEEEEE] mt-10 rounded-xl p-10'>
-
-            <BarChart
-                width={1200}
-                height={400}
-                data={chatData}
-                margin={{
-                    top: 20,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <Tooltip />
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="bookName" />
-                <YAxis />
-                <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-                    {chatData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colors[index % 20]} />
-                    ))}
-                </Bar>
-            </BarChart>
+        <div className='container mx-auto bg-[#EEEEEE] mt-10 rounded-xl md:p-10 h-[300px] md:h-[500px] w-[100%]'>
+            <ResponsiveContainer>
+                <BarChart
+                    width={1200}
+                    height={400}
+                    data={chatData}
+                    margin={{
+                        top: 20,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                    }}
+                >
+                    <Tooltip />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="bookName" />
+                    <YAxis />
+                    <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                        {chatData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </ResponsiveContainer>
 
 
         </div>

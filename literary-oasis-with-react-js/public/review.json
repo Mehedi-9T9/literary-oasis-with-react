@@ -1,62 +1,62 @@
 [
     {
         "name": "John Doe",
-        "img": "https://example.com/john_doe.jpg",
-        "review": "Excellent service, very satisfied with the product quality!",
+        "img": "https://i.ibb.co/0sPq1PC/asian-man-1468032-640.jpg",
+        "comment": "Excellent service, very satisfied with the product quality!",
         "rating": 5
     },
     {
         "name": "Jane Smith",
-        "img": "https://example.com/jane_smith.jpg",
-        "review": "Friendly staff and fast delivery. Will definitely shop here again.",
+        "img": "https://i.ibb.co/Vg2C3zW/beard-1845166-1280.jpg",
+        "comment": "Friendly staff and fast delivery. Will definitely shop here again.",
         "rating": 4.5
     },
     {
         "name": "Michael Johnson",
-        "img": "https://example.com/michael_johnson.jpg",
-        "review": "Great experience overall. Product exceeded expectations.",
+        "img": "https://i.ibb.co/hDw3kzQ/download-1.jpg",
+        "comment": "Great experience overall. Product exceeded expectations.",
         "rating": 4
     },
     {
         "name": "Emily Brown",
-        "img": "https://example.com/emily_brown.jpg",
-        "review": "Quick response from customer service. Would recommend!",
+        "img": "https://i.ibb.co/prZGC5W/download-2.jpg",
+        "comment": "Quick response from customer service. Would recommend!",
         "rating": 4.2
     },
     {
         "name": "David Wilson",
-        "img": "https://example.com/david_wilson.jpg",
-        "review": "Impressed with the quality and speed of delivery.",
+        "img": "https://i.ibb.co/j60L9GN/download-3.jpg",
+        "comment": "Impressed with the quality and speed of delivery.",
         "rating": 4.8
     },
     {
         "name": "Sarah Taylor",
-        "img": "https://example.com/sarah_taylor.jpg",
-        "review": "Very happy with my purchase. Excellent value for money.",
+        "img": "https://i.ibb.co/wJCSSTt/man-1867175-960-720.jpg",
+        "comment": "Very happy with my purchase. Excellent value for money.",
         "rating": 4.7
     },
     {
         "name": "Christopher Martinez",
-        "img": "https://example.com/christopher_martinez.jpg",
-        "review": "Product arrived on time and as described. No complaints.",
+        "img": "https://i.ibb.co/WPGZhbm/download.jpg",
+        "comment": "Product arrived on time and as described. No complaints.",
         "rating": 4.3
     },
     {
         "name": "Amanda Anderson",
-        "img": "https://example.com/amanda_anderson.jpg",
-        "review": "Smooth transaction. Would buy from this seller again.",
+        "img": "https://i.ibb.co/DC68Xz9/download-4.jpg",
+        "comment": "Smooth transaction. Would buy from this seller again.",
         "rating": 4.6
     },
     {
         "name": "James Thompson",
-        "img": "https://example.com/james_thompson.jpg",
-        "review": "Highly recommended! Excellent customer service.",
+        "img": "https://i.ibb.co/C241TJf/01708758873.jpg",
+        "comment": "Highly recommended! Excellent customer service.",
         "rating": 4.9
     },
     {
         "name": "Lauren Garcia",
-        "img": "https://example.com/lauren_garcia.jpg",
-        "review": "Product was exactly as described. Very pleased with my purchase.",
+        "img": "https://i.ibb.co/DC68Xz9/download-4.jpg",
+        "comment": "Product was exactly as described. Very pleased with my purchase.",
         "rating": 4.4
     }
 ]

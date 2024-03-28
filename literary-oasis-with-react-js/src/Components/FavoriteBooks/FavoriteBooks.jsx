@@ -18,8 +18,6 @@ const FavoriteBooks = () => {
                         }
                     }
                     setFavs(favArray);
-
-
                 }
             })
     }, [])
