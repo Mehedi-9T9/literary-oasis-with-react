@@ -8,6 +8,8 @@ import ListBooks from './Components/ListBooks/ListBooks.jsx'
 import PageToRead from './Components/PageToRead/PageToRead.jsx'
 import BookDetails from './Components/BookDetails/BookDetails.jsx'
 import Error from './Components/Error/Error.jsx'
+import FavoriteBooks from './Components/FavoriteBooks/FavoriteBooks.jsx'
+import Review from './Components/Review/Review.jsx'
 
 
 const router = createBrowserRouter([{
@@ -34,6 +36,14 @@ const router = createBrowserRouter([{
       // loader: fetch('https://mehedi-9t9.github.io/books-data-host/books.json'),
       element: <BookDetails></BookDetails>,
 
+    },
+    {
+      path: '/favoritebook',
+      element: <FavoriteBooks></FavoriteBooks>
+    },
+    {
+      path: '/review',
+      element: <Review></Review>
     }
   ]
 }])

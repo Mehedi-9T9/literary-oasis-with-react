@@ -33,5 +33,23 @@ const saveWishId = (id) => {
 
 }
 
+const getFavItem = () => {
+    const storedFavItem = localStorage.getItem('favItem')
+    if (storedFavItem) {
+        return JSON.parse(storedFavItem)
+    }
+    return []
+}
+const saveFavItem = (id) => {
+    const storedFavItems = getFavItem()
+    const existis = storedFavItems.find(favId => favId == id)
+    if (!existis) {
+        storedFavItems.push(id);
+        localStorage.setItem('favItem', JSON.stringify(storedFavItems))
+    }
 
-export { getBookId, savedBook, saveWishId, getWishId }
+
+}
+
+
+export { getBookId, savedBook, saveWishId, getWishId, saveFavItem, getFavItem }
